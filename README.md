@@ -1,2 +1,9 @@
-# SYSC4906G_DEVS_MITOSIS
-A DEVS models for Mitosis
+# DEVS Mitosis Model
+
+## Overview
+
+## Getting Started
+
+### Build
+
+### Excecute

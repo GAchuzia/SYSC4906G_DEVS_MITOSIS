@@ -1,0 +1,50 @@
+name: Auto Release
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            - name: Get tag name
+              id: tag
+              run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+              
+            - name: Create zip archive
+              run: |
+                zip -r devs-mitosis-${{ steps.tag.outputs.TAG_NAME }}.zip . \
+                -x "*.git*" \
+                -x "*node_modules*" \
+                -x "*__pycache__*" \
+                -x "*.pyc" \
+                -x "*backenv/*" \
+                -x "*mlenv/*" \
+                -x "*.env" \
+                -x "*.venv" \
+                -x "*.pytest_cache*"
+            
+            - name: Create GitHub Release
+              uses: softprops/action-gh-release@v1
+              with:
+                tag_name: ${{ steps.tag.outputs.TAG_NAME }}
+                name: ${{ steps.tag.outputs.TAG_NAME }}
+                body: |
+                    Release ${{ steps.tag.outputs.TAG_NAME }}
+                    
+                files: devs-mitosis-${{ steps.tag.outputs.TAG_NAME }}.zip
+                draft: false
+                prerelease: false
+
+# How to create a release
+# git tag vX.X.X
+# git push origin vX.X.X

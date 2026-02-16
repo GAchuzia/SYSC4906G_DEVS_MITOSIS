@@ -1,11 +1,7 @@
-# DEVS Mitosis Model
+# Cadmium Mitosis Model
 
-## Overview
+## Files Organization
 
-Link to Assignment 1 Google Doc can be found [here](https://docs.google.com/document/d/18gI8lMFhlbsHi-Hr9DYOa1AiAgnIHNW0if849rs-5tc/edit?usp=sharing)
+## Steps For Manual Execution
 
-## Getting Started
-
-### Build
-
-### Excecute
+## Steps For Script Execution

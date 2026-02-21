@@ -1,0 +1,24 @@
+{ "class": "GraphLinksModel",
+  "copiesArrays": true,
+  "copiesArrayObjects": true,
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [
+{"text":"forming","figure":"Ellipse","size":"97 102","fill":"white","key":-1,"loc":"-281.5 -63","group":-6},
+{"text":"attached","figure":"Ellipse","size":"97 97","fill":"white","key":-2,"loc":"-15.5 -64.5","group":-6},
+{"text":"pulling","figure":"Ellipse","size":"102 102","fill":"white","key":-3,"loc":"273 -64","group":-6},
+{"text":"disassembling","figure":"Ellipse","size":"115 104","fill":"white","key":-4,"loc":"581.5 -68","group":-6},
+{"text":"inactive","figure":"Ellipse","size":"104 97","fill":"white","key":-5,"loc":"894 -63.5","group":-6},
+{"text":"SpindleAppartusModel","isGroup":true,"color":"black","I":[],"O":[],"key":-6},
+{"text":"input_phase","figure":"Rectangle","size":"90 65","fill":"orange","key":-7,"loc":"-550 -60"},
+{"text":"status_out","figure":"Square","size":"62 65","fill":"pink","key":-8,"loc":"1110 -50"}
+],
+  "linkDataArray": [
+{"points":[-233,-63,-223,-63,-148.5,-63,-148.5,-64.5,-74,-64.5,-64,-64.5],"color":"black","from":-1,"to":-2,"fromPort":"R","toPort":"L","label":"input_phase"},
+{"points":[33,-64.5,43,-64.5,127.5,-64.5,127.5,-64,212,-64,222,-64],"color":"black","from":-2,"to":-3,"fromPort":"R","toPort":"L","label":"input_phase"},
+{"points":[324,-64,334,-64,424,-64,424,-68,514,-68,524,-68],"color":"black","from":-3,"to":-4,"fromPort":"R","label":"input_phase","toPort":"L"},
+{"points":[639,-68,649,-68,740.5,-68,740.5,-63.5,832,-63.5,842,-63.5],"color":"black","from":-4,"to":-5,"fromPort":"R","toPort":"L","label":"input_phase"},
+{"points":[-505,-60,-495,-60,-443.7136841488889,-60,-443.7136841488889,-60.45433603002705,-392.4273682977778,-60.45433603002705,-382.4273682977778,-60.45433603002705],"color":"black","from":-7,"fromPort":"R","label":""},
+{"points":[894,-15,894,-5,894,-2,306.25,-2,-281.5,-2,-281.5,-12],"color":"black","from":-5,"to":-1,"fromPort":"B","toPort":"B","label":"input_phase"},
+{"points":[998.480236235119,-52.65076986073481,1008.480236235119,-52.65076986073481,1038.7401181175596,-52.65076986073481,1038.7401181175596,-50,1069,-50,1079,-50],"color":"black","to":-8,"toPort":"L","label":""}
+]}

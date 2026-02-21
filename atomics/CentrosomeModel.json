@@ -1,0 +1,23 @@
+{ "class": "GraphLinksModel",
+  "copiesArrays": true,
+  "copiesArrayObjects": true,
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "modelData": {"position":"-1541.0557562240692 -295.61873914196946"},
+  "nodeDataArray": [
+{"text":"duplicated","figure":"Ellipse","size":"96 83","fill":"white","key":-1,"loc":"-48.5 -49","group":-7},
+{"text":"migrating","figure":"Ellipse","size":"85 85","fill":"white","key":-2,"loc":"680 -50","group":-7},
+{"text":"at_poles","figure":"Ellipse","size":"85 85","fill":"white","key":-3,"loc":"420 -50","group":-7},
+{"text":"stable","figure":"Ellipse","size":"85 85","fill":"white","key":-5,"loc":"41720 39910","group":-7},
+{"text":"status_out","figure":"Square","size":"62 65","fill":"pink","key":-8,"loc":"580 -50"},
+{"text":"CentrosomeModel","isGroup":true,"color":"black","I":[],"O":[],"key":-7},
+{"text":"input_phase","figure":"Rectangle","size":"90 65","fill":"orange","key":-9,"loc":"-530 -50"}
+],
+  "linkDataArray": [
+{"points":[448.67071242559655,-50.45278517799997,458.67071242559655,-50.45278517799997,498.8353562127983,-50.45278517799997,498.8353562127983,-50,539,-50,549,-50],"color":"black","to":-8,"toPort":"L"},
+{"points":[420,-7.5,420,2.5,420,24.258209466456407,-277.18799999999464,24.258209466456407,-277.18799999999464,1.5080000000016298,-277.18799999999464,-8.49199999999837],"color":"black","from":-3,"to":-5,"toPort":"B","fromPort":"B","label":"input_phase"},
+{"points":[-234.68799999999464,-50.99199999999837,-224.68799999999464,-50.99199999999837,-165.59399999999732,-50.99199999999837,-165.59399999999732,-49,-106.5,-49,-96.5,-49],"color":"black","from":-5,"to":-1,"fromPort":"R","toPort":"L","label":"input_phase"},
+{"points":[-0.5,-49,9.5,-49,78.5,-49,78.5,-50,147.5,-50,157.5,-50],"color":"black","from":-1,"to":-2,"fromPort":"R","toPort":"L","label":"input_phase"},
+{"points":[242.5,-50,252.5,-50,310,-50,310,-50,367.5,-50,377.5,-50],"color":"black","from":-2,"to":-3,"fromPort":"R","toPort":"L","label":"input_phase"},
+{"points":[-485,-50,-475,-50,-427.13312051631146,-50,-427.13312051631146,-50.118207767103804,-379.6879386675303,-50.118207767103804,-369.6879386675303,-50.118207767103804],"color":"black","from":-9,"fromPort":"R","label":""}
+]}

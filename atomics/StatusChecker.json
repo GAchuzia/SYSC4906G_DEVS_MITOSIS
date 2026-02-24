@@ -1,0 +1,26 @@
+{ "class": "GraphLinksModel",
+  "copiesArrays": true,
+  "copiesArrayObjects": true,
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [
+{"text":"Interphase","figure":"Ellipse","size":"94 85","fill":"white","key":-1,"loc":"-624.992 -457.5","group":-7},
+{"text":"Prophase","figure":"Ellipse","size":"85 85","fill":"white","key":-2,"loc":"-329.49199999999996 -457.5","group":-7},
+{"text":"Metaphase","figure":"Ellipse","size":"93 85","fill":"white","key":-3,"loc":"-25.491999999999962 -457.5","group":-7},
+{"text":"Anaphase","figure":"Ellipse","size":"87 85","fill":"white","key":-4,"loc":"-28.491999999999962 -157.5","group":-7},
+{"text":"Telophase","figure":"Ellipse","size":"89 85","fill":"white","key":-5,"loc":"-327.49199999999996 -157.5","group":-7},
+{"text":"Cytokinesis","figure":"Ellipse","size":"97 85","fill":"white","key":-6,"loc":"-623.492 -157.5","group":-7},
+{"text":"StatusChecker","isGroup":true,"color":"black","I":[{"id":"I1","text":"I1","color":"black"}],"O":[{"id":"O1","text":"O1","color":"black"}],"key":-7},
+{"text":"cell_status","figure":"Rectangle","size":"87 65","fill":"orange","key":-8,"loc":"-1001.5 -300"},
+{"text":"transition","figure":"Square","size":"146 65","fill":"pink","key":-9,"loc":"362 -310"}
+],
+  "linkDataArray": [
+{"points":[-577.992,-457.5,-567.992,-457.5,-476.9541432333193,-457.5,-476.9541432333193,-457.5,-381.99199999999996,-457.5,-371.99199999999996,-457.5],"color":"black","from":-1,"to":-2,"fromPort":"R","toPort":"L","label":"transition"},
+{"points":[-286.99199999999996,-457.5,-276.99199999999996,-457.5,-179.49199999999996,-457.5,-179.49199999999996,-457.5,-81.99199999999996,-457.5,-71.99199999999996,-457.5],"color":"black","from":-2,"to":-3,"fromPort":"R","toPort":"L","label":"transition"},
+{"points":[21.008000000000038,-457.5,31.008000000000038,-457.5,31.008000000000038,-157.5,28.008000000000038,-157.5,25.008000000000038,-157.5,15.008000000000038,-157.5],"color":"black","from":-3,"to":-4,"fromPort":"R","toPort":"R","label":"transition"},
+{"points":[-71.99199999999996,-157.5,-81.99199999999996,-157.5,-177.49199999999996,-157.5,-177.49199999999996,-157.5,-272.99199999999996,-157.5,-282.99199999999996,-157.5],"color":"black","from":-4,"to":-5,"fromPort":"L","toPort":"R","label":"transition"},
+{"points":[-371.99199999999996,-157.5,-381.99199999999996,-157.5,-473.49199999999996,-157.5,-473.49199999999996,-157.5,-564.992,-157.5,-574.992,-157.5],"color":"black","from":-5,"to":-6,"fromPort":"L","toPort":"R","label":"transition"},
+{"points":[-671.992,-457.5,-681.992,-457.5,-681.992,-157.5,-681.992,-157.5,-681.992,-157.5,-671.992,-157.5],"color":"black","from":-1,"to":-6,"fromPort":"L","toPort":"L","label":"transition"},
+{"from":-8,"to":-7,"fromPort":"","toPort":"I1","points":[-958,-300,-948,-300,-870.9284754962598,-300,-870.9284754962598,-301.00000000000006,-790.760941248308,-301.00000000000006,-780.760941248308,-301.00000000000006],"label":"cell_status"},
+{"from":-7,"to":-9,"fromPort":"O1","toPort":"L","points":[132.76194143580437,-309.93772430419926,142.76194143580437,-309.93772430419926,210.8809707179022,-309.93772430419926,210.8809707179022,-310,279,-310,289,-310],"label":"transition"}
+]}

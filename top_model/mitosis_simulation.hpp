@@ -11,10 +11,10 @@ public:
         auto checker    = addComponent<StatusChecker>("checker");
 
         // Direct coupling between the bundled container and the checker
-        addCoupling(structures->out_chrom,  checker->in_chrom);
-        addCoupling(structures->out_ne,     checker->in_ne);
-        addCoupling(structures->out_sp,     checker->in_sp);
-        addCoupling(structures->out_cen,    checker->in_cen);
-        addCoupling(structures->out_nucleo, checker->in_nucleo);
+        addCoupling(structures->out_chrom,  checker->chrom_status);
+        addCoupling(structures->out_ne,     checker->ne_status);
+        addCoupling(structures->out_sp,     checker->sp_status);
+        addCoupling(structures->out_cen,    checker->cen_status);
+        addCoupling(structures->out_nucleo, checker->nucleo_status);
     }
 };

@@ -33,9 +33,9 @@ public:
         // Route internal atomic outputs to  (EOC)
         addCoupling(chrom->status_out,  out_chrom);
         addCoupling(ne->status_out,     out_ne);
-        addCoupling(sp->status,     out_sp);
-        addCoupling(cen->status,    out_cen);
-        addCoupling(nucleo->status, out_nucleo);
+        addCoupling(sp->status_out,     out_sp);
+        addCoupling(cen->status_out,    out_cen);
+        addCoupling(nucleo->status_out, out_nucleo);
     }
 };
 #endif

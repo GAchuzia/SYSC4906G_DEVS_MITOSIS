@@ -9,7 +9,6 @@ class top_model : public Coupled {
 public:
     top_model(const std::string& id) : Coupled(id) {
 
-        // 🔹 Input Readers for each structure
         auto chrom_reader  = addComponent<lib::IEStream<std::string>>(
             "chrom_reader", "input_data/chrom_input.txt");
 

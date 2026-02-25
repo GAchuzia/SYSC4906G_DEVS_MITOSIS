@@ -1,0 +1,23 @@
+{ "class": "GraphLinksModel",
+  "copiesArrays": true,
+  "copiesArrayObjects": true,
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [
+{"text":"input_phase","figure":"Rectangle","size":"89 65","fill":"orange","key":-1,"loc":"-990 -220"},
+{"text":"status_out","figure":"Square","size":"62 65","fill":"pink","key":-2,"loc":"370 -230"},
+{"text":"restored","figure":"Ellipse","size":"85 85","fill":"white","key":-7,"loc":"152.5 -225","group":-15},
+{"text":"intact","figure":"Ellipse","size":"85 85","fill":"white","key":-11,"loc":"-767.5 -225","group":-15},
+{"text":"disassembling","figure":"Ellipse","size":"116 110","fill":"white","key":-12,"loc":"-527.5 -225","group":-15},
+{"text":"absent","figure":"Ellipse","size":"89 85","fill":"white","key":-13,"loc":"-285.5 -225","group":-15},
+{"text":"reforming","figure":"Ellipse","size":"96 91","fill":"white","key":-14,"loc":"-67.5 -225","group":-15},
+{"text":"NuclearEnvelopeModel","isGroup":true,"color":"black","I":[],"O":[],"key":-15}
+],
+  "linkDataArray": [
+{"from":-11,"to":-12,"fromPort":"","toPort":"L","points":[-725,-225,-715,-225,-655.25,-225,-655.25,-225,-595.5,-225,-585.5,-225],"label":"input_phase"},
+{"from":-12,"to":-13,"fromPort":"R","toPort":"L","points":[-469.5,-225,-459.5,-225,-399.75,-225,-399.75,-225,-340,-225,-330,-225],"label":"input_phase"},
+{"from":-13,"to":-14,"fromPort":"","toPort":"L","points":[-241,-225,-231,-225,-178.25,-225,-178.25,-225,-125.5,-225,-115.5,-225],"label":"input_phase"},
+{"from":-14,"to":-7,"fromPort":"","toPort":"L","points":[-19.5,-225,-9.5,-225,45.25,-225,45.25,-225,100,-225,110,-225],"label":"input_phase\n"},
+{"points":[-945.5,-220,-935.5,-220,-905.0583343505859,-220,-905.0583343505859,-217,-874.6166687011719,-217,-864.6166687011719,-217],"color":"black","from":-1,"fromPort":"R","label":""},
+{"points":[247.38333129882812,-226,257.3833312988281,-226,293.19166564941406,-226,293.19166564941406,-230,329,-230,339,-230],"color":"black","to":-2,"toPort":"L","label":""}
+]}

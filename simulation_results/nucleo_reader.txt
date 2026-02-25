@@ -1,0 +1,17 @@
+time;model_id;model_name;port_name;data
+0;1;nucleo_reader;;0
+0;1;nucleo_reader;out;ready
+0;1;nucleo_reader;;10
+10;1;nucleo_reader;out;not_ready
+10;1;nucleo_reader;;10
+20;1;nucleo_reader;out;ready
+20;1;nucleo_reader;;15
+35;1;nucleo_reader;out;not_ready
+35;1;nucleo_reader;;10
+45;1;nucleo_reader;out;ready
+45;1;nucleo_reader;;15
+60;1;nucleo_reader;out;not_ready
+60;1;nucleo_reader;;10
+70;1;nucleo_reader;out;ready
+70;1;nucleo_reader;;inf
+70;1;nucleo_reader;;inf

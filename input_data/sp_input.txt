@@ -1,0 +1,7 @@
+0.0 ready
+15.0 not_ready
+20.0 ready
+40.0 not_ready
+45.0 ready
+65.0 not_ready
+70.0 ready

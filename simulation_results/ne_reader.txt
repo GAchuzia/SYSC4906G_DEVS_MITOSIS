@@ -1,0 +1,17 @@
+time;model_id;model_name;port_name;data
+0;7;ne_reader;;0
+0;7;ne_reader;out;ready
+0;7;ne_reader;;10
+10;7;ne_reader;out;not_ready
+10;7;ne_reader;;10
+20;7;ne_reader;out;ready
+20;7;ne_reader;;15
+35;7;ne_reader;out;not_ready
+35;7;ne_reader;;10
+45;7;ne_reader;out;ready
+45;7;ne_reader;;15
+60;7;ne_reader;out;not_ready
+60;7;ne_reader;;10
+70;7;ne_reader;out;ready
+70;7;ne_reader;;inf
+70;7;ne_reader;;inf

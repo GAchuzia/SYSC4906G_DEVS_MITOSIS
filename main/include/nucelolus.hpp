@@ -9,7 +9,7 @@
 using namespace cadmium;
 using namespace std;
 
-struct Spindle {
+struct Nucleolus {
 
     //Ports
     struct phase_in : public in_port<string> {};
@@ -26,8 +26,8 @@ struct Spindle {
 
     state_type state;
 
-    Spindle() {
-        state.state = "inactive"; 
+    Nucleolus() {
+        state.state = "visble"; 
         state.active = false
     }
 
@@ -41,26 +41,22 @@ struct Spindle {
         typename make_message_bags<input_ports>::type mbs) {
 
         for (const auto &x : get_messages<Nucleolus_defs::phase_in>(mbs)) {
-            
-            if (x == "Prophase") {
-                state.state = "forming";
-                state.active = true;  
+
+            if (x == "Interphase") {
+                state.state = "visible";
+                state.active = false;
             }
-            else if (x == "Metaphase") {
-                state.state = "attached";
-                state.active = true;
-            }
-            else if (x == "Anaphase") {
-                state.state = "pulling";
-                state.active = true;
+            else if (x == "Prophase") {
+                state.state = "disappeared";
+                state.active = true;   // transition process
             }
             else if (x == "Telophase") {
-                state.state = "disassembling";
-                state.active = true; 
+                state.state = "reappearing";
+                state.active = true;   // transition process
             }
             else if (x == "Cytokinesis") {
-                state.state = "inactive";
-                state.active = true;
+                state.state = "visible";
+                state.active = false;
             }
         }
     }
@@ -72,7 +68,7 @@ struct Spindle {
 
         std::vector<std::string> bag_port_out;
 
-        if (state.state == "inactive") {
+        if (state.state == "visible") {
             bag_port_out.push_back("ready");
         } else {
             bag_port_out.push_back("not_ready");
@@ -84,23 +80,13 @@ struct Spindle {
     }
 
 
-    // Time advance
     TIME time_advance() const {
         if (state.active){
-            if (state.state == "forming")
+            if (state.state == "disappeared")
                 return TIME("00:00:02:000");  // t1
 
-            if (state.state == "attached")
+            if (state.state == "reappearing")
                 return TIME("00:00:03:000");  // t2
-            
-            if (state.state == "pulling")
-                return TIME("00:00:03:000");  // t3
-            
-            if (state.state == "disassembling")
-                return TIME("00:00:03:000");  // t4
-
-            if (state.state == "inactive")
-                return TIME("00:00:03:000");  // t5
         }
         return numeric_limits<TIME>::infinity();
 

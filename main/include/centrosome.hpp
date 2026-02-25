@@ -1,66 +1,77 @@
 #ifndef CENTROSOME_HPP
 #define CENTROSOME_HPP
 
-#include <cadmium/modeling/ports.hpp>
-#include <cadmium/modeling/message_bag.hpp>
-#include <limits>
+#include <cadmium/modeling/devs/atomic.hpp>
+#include <iostream>
 #include <string>
 
 using namespace cadmium;
-using namespace std;
 
-struct Centrosome {
+struct CentrosomeState {
+    std::string state;
+    bool active;
+};
 
-    //Ports
-    struct phase_in : public in_port<string> {};
-    struct status_out : public out_port<string> {};
+inline std::ostream& operator<<(std::ostream& os, const CentrosomeState& s) {
+    os << s.state;
+    return os;
+}
 
-    using input_ports = tuple<phase_in>;
-    using output_ports = tuple<status_out>;
+class Centrosome : public Atomic<CentrosomeState> {
+public:
+    
+    Port<std::string> phase_in;
+    Port<std::string> status_out;
 
-    //State 
-    struct state_type {
-        string state;
-    };
-
-    state_type state;
-
-    Centrosome() {
-        state.state = "duplicated"; 
+    Centrosome(const std::string& id) : Atomic<CentrosomeState>(id, {"stable", false}) {
+        phase_in = addInPort<std::string>("phase_in");
+        status_out = addOutPort<std::string>("status_out");
     }
 
     // Internal Transition
+    void internalTransition(CentrosomeState& state) const override {
+        state.active = false;
+    }
 
-
-    // External Transition
-    void external_transition(TIME e,
-        typename make_message_bags<input_ports>::type mbs) {
-
-        for (const auto &x : get_messages<phase_in>(mbs)) {
-
-            if (x == "Interphase") {
+    // External Transition 
+    void externalTransition(CentrosomeState& state, double e) const override {
+        for (const auto &msg : phase_in->getBag()) {
+            if (msg == "Interphase") {
+                 state.state = "stable";
+                  state.active = false; 
+            }
+            else if (msg == "Prophase") { 
                 state.state = "duplicated";
+                 state.active = true; 
             }
-            else if (x == "Prophase") {
-                state.state = "separating";
+            else if (msg == "Metaphase") { 
+                state.state = "migrating";
+                 state.active = true; 
             }
-            else if (x == "Metaphase") {
-                state.state = "aligned";
-            }
-            else if (x == "Anaphase") {
-                state.state = "separated";
-            }
-            else if (x == "Telophase") {
-                state.state = "stable";
-            }
-            else if (x == "Cytokinesis") {
-                state.state = "stable";
+            else if (msg == "Anaphase" || msg == "Telophase") { 
+                state.state = "at_poles"; 
+                state.active = false; 
             }
         }
     }
 
-    TIME time_advance() const {
-
+    // Output
+    void output(const CentrosomeState& state) const override {
+        if (state.state == "at_poles") {
+            status_out->addMessage("ready");
+        } else {
+            status_out->addMessage("not_ready");
+        }
     }
 
+    // Time Advance
+    double timeAdvance(const CentrosomeState& state) const override {
+        if (state.active) {
+            if (state.state == "duplicated") return 2.0; 
+            if (state.state == "migrating")  return 3.0;
+        }
+        return std::numeric_limits<double>::infinity();
+    }
 };
+
+#endif

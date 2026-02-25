@@ -12,7 +12,7 @@ This folder contains the MITOSIS DEVS model implemented in Cadmium.
 - `makefile`
 - `build_sim.sh`
 
-**main/** — Entry point and atomic/coupled model headers
+**main/**-Entry point and atomic/coupled model headers
 
 - `main.cpp`
 - `include/`
@@ -25,11 +25,11 @@ This folder contains the MITOSIS DEVS model implemented in Cadmium.
   - `phase_controller.hpp`
   - `status_checker.hpp`
 
-**top_model/** — Top coupled model
+**top_model/**-Top coupled model
 
 - `top.hpp`
 
-**input_data/** — Input data for the model and tests
+**input_data/**-Input data for the model and tests
 
 - `atomic_models/`
   - `TC_Chromosome1.txt`, `TC_Chromosome2.txt`
@@ -38,16 +38,16 @@ This folder contains the MITOSIS DEVS model implemented in Cadmium.
   - `TC_StatusChecker1.txt`, `TC_PhaseController1.txt`, `TC_PhaseController.txt`
 - `TC_Centrosome_Pair1.txt`
 
-**simulation_results/** — Created when you run the model. Contains CSV outputs per model.
+**simulation_results/**-Created when you run the model. Contains CSV outputs per model.
 
 - `chromosome_1.txt`, `chromosome_2.txt`, `nuclear_envelope_1.txt`, `nuclear_envelope_2.txt`, `centrosome.txt`, `nucleolus.txt`, …
 
-**tests/** — Unit tests for atomic models
+**tests/**-Unit tests for atomic models
 
 - `main.cpp`
 - `test.hpp`
 
-**atomics/** — DEVS Graph / JSON specs for atomic models
+**atomics/**-DEVS Graph / JSON specs for atomic models
 
 - `ChromosomeModel.json`, `NuclearEnvelopeModel.json`, `CentrosomeModel.json`, `NucleolusModel.json`, `SpindleAppartusModel.json`, `StatusChecker.json`, `PhaseController.json`
 
@@ -88,7 +88,7 @@ This folder contains the MITOSIS DEVS model implemented in Cadmium.
    ```bash
    ./run_tests
    ```
-2. Each test runs one atomic with an input file from `input_data/atomic_models/`. Output is CSV to stdout.
+2. Each test runs one atomic with an input file from `input_data/atomic_models/`. Output is CSV format to stdout.
 
 ### 5. Run with different inputs
 

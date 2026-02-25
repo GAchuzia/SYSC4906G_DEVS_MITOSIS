@@ -1,15 +1,34 @@
 #include <cadmium/modeling/devs/coupled.hpp>
 #include <cadmium/lib/iestream.hpp>
-#include "../main/include/phase_controller.hpp"
+#include "../main/include/status_checker.hpp"
 
 using namespace cadmium;
 
 class top_model : public Coupled {
 public:
     top_model(const std::string& id) : Coupled(id) {
-        auto input_reader = addComponent<lib::IEStream<std::string>>("input_reader", "input_data/phase_controller_data.txt");
-        auto phase_controller = addComponent<PhaseController>("phase_controller");
 
-        addCoupling(input_reader->out, phase_controller->permission);
+        auto chrom_reader  = addComponent<lib::IEStream<std::string>>(
+            "chrom_reader", "input_data/chrom_input.txt");
+
+        auto ne_reader     = addComponent<lib::IEStream<std::string>>(
+            "ne_reader", "input_data/ne_input.txt");
+
+        auto sp_reader     = addComponent<lib::IEStream<std::string>>(
+            "sp_reader", "input_data/sp_input.txt");
+
+        auto cen_reader    = addComponent<lib::IEStream<std::string>>(
+            "cen_reader", "input_data/cen_input.txt");
+
+        auto nucleo_reader = addComponent<lib::IEStream<std::string>>(
+            "nucleo_reader", "input_data/nucleo_input.txt");
+
+        auto status_checker = addComponent<StatusChecker>("status_checker");
+
+        addCoupling(chrom_reader->out,  status_checker->chrom_status);
+        addCoupling(ne_reader->out,     status_checker->ne_status);
+        addCoupling(sp_reader->out,     status_checker->sp_status);
+        addCoupling(cen_reader->out,    status_checker->cen_status);
+        addCoupling(nucleo_reader->out, status_checker->nucleo_status);
     }
 };

@@ -1,10 +1,11 @@
-#ifndef CENTROSOME_HPP
-#define CENTROSOME_HPP
+#ifndef NUCLEOLUS_HPP 
+#define NUCLEOLUS_HPP
 
 
 #include <cadmium/modeling/devs/atomic.hpp>
 #include <iostream>
 #include <string>
+#include <limits>
 
 using namespace cadmium;
 using namespace std;
@@ -79,4 +80,6 @@ public:
         }
         return std::numeric_limits<double>::infinity();
     }
-}
+};
+
+#endif

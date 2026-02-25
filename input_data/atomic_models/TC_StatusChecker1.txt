@@ -1,0 +1,5 @@
+chrom_status = ready
+ne_status = ready
+sp_status = ready
+cen_status = ready
+nucleo_status = ready

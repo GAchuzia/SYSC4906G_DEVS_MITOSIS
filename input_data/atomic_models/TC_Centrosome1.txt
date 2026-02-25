@@ -1,0 +1,3 @@
+0.0 Interphase
+5.0 Prophase
+10.0 Metaphase

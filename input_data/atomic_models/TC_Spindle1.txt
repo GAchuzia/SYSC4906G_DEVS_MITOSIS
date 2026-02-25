@@ -1,0 +1,4 @@
+0.0 Prophase
+10.0 Metaphase
+20.0 Anaphase
+30.0 Telophase

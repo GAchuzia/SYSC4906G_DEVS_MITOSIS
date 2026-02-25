@@ -1,5 +1,5 @@
-#ifndef CENTROSOME_HPP
-#define CENTROSOME_HPP
+#ifndef SPINDLE_HPP
+#define SPINDLE_HPP
 
 #include <cadmium/modeling/devs/atomic.hpp>
 #include <iostream>
@@ -18,7 +18,7 @@ inline ostream& operator<<(ostream& os, const SpindleState& s) {
     return os;
 }
 
-class Centrosome : public Atomic<SpindleState> {
+class Spindle : public Atomic<SpindleState> {
 public:
     
     Port<std::string> phase_in;
@@ -92,4 +92,6 @@ public:
         }
         return std::numeric_limits<double>::infinity();
     }
-}
+};
+
+#endif

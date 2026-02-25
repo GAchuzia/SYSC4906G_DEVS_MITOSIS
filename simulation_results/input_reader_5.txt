@@ -1,0 +1,5 @@
+time;model_id;model_name;port_name;data
+0;10;input_reader_5;;0
+0;10;input_reader_5;out;Prophase
+0;10;input_reader_5;;inf
+23;10;input_reader_5;;inf

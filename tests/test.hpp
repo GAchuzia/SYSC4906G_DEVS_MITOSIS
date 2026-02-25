@@ -10,6 +10,8 @@
 
 // Atomic atomic models
 #include "../main/include/centrosome.hpp"
+#include "../main/include/chromosome.hpp"
+#include "../main/include/nuclear_envelope.hpp"
 #include "../main/include/nucleolus.hpp"
 #include "../main/include/spindle.hpp" 
 
@@ -30,6 +32,7 @@ struct AtomicTester : public Coupled {
 // Function to handle the simulation boilerplate
 template<typename ModelType>
 void run_test(std::string test_name, std::string file_path) {
+    std::cout << "\n========== " << test_name << " ==========\n";
     auto model = std::make_shared<AtomicTester<ModelType>>(test_name, file_path);
     auto rootCoordinator = RootCoordinator(model);
     

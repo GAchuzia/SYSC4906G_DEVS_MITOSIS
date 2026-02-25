@@ -1,0 +1,7 @@
+time;model_id;model_name;port_name;data
+0;9;input_reader_2;;0
+0;9;input_reader_2;out;Prophase
+0;9;input_reader_2;;20
+20;9;input_reader_2;out;Telophase
+20;9;input_reader_2;;inf
+23;9;input_reader_2;;inf

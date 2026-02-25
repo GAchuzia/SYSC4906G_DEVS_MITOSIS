@@ -1,0 +1,26 @@
+{ "class": "GraphLinksModel",
+  "copiesArrays": true,
+  "copiesArrayObjects": true,
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [
+{"text":"input_phase","figure":"Rectangle","size":"87 65","fill":"orange","key":-1,"loc":"-850 -90"},
+{"text":"uncondensed\n\n","figure":"Ellipse","size":"110 97","fill":"white","key":-2,"loc":"-640 -90","group":-10},
+{"text":"condensed","figure":"Ellipse","size":"103 92","fill":"white","key":-4,"loc":"-400 -90","group":-10},
+{"text":"aligned","figure":"Ellipse","size":"85 85","fill":"white","key":-5,"loc":"-170 -90","group":-10},
+{"text":"separating","figure":"Ellipse","size":"99 96","fill":"white","key":-6,"loc":"60 -90","group":-10},
+{"text":"decondensing","figure":"Ellipse","size":"117 107","fill":"white","key":-7,"loc":"310 -90","group":-10},
+{"text":"completed","figure":"Ellipse","size":"101 96","fill":"white","key":-8,"loc":"580 -90","group":-10},
+{"text":"status_out","figure":"Square","size":"62 65","fill":"pink","key":-9,"loc":"780 -80"},
+{"text":"ChromosomeModel","isGroup":true,"color":"black","I":[],"O":[],"key":-10}
+],
+  "linkDataArray": [
+{"from":-4,"to":-5,"fromPort":"R","toPort":"L","points":[-348.5,-90,-338.5,-90,-280.5,-90,-280.5,-90,-222.5,-90,-212.5,-90],"label":"input_phase"},
+{"from":-2,"to":-4,"fromPort":"R","toPort":"L","points":[-585,-90,-575,-90,-518.25,-90,-518.25,-90,-461.5,-90,-451.5,-90],"label":"input_phase"},
+{"from":-5,"to":-6,"fromPort":"","toPort":"L","points":[-127.5,-90,-117.5,-90,-58.5,-90,-58.5,-90,0.5,-90,10.5,-90],"label":"input_phase"},
+{"from":-6,"to":-7,"fromPort":"R","toPort":"L","points":[109.5,-90,119.5,-90,180.5,-90,180.5,-90,241.5,-90,251.5,-90],"label":"input_phase"},
+{"from":-7,"to":-8,"fromPort":"","toPort":"L","points":[368.5,-90,378.5,-90,449,-90,449,-90,519.5,-90,529.5,-90],"label":"input_phase"},
+{"from":-8,"to":-2,"fromPort":"B","toPort":"B","points":[580,-42,580,-32,580,-31.5,-30,-31.5,-640,-31.5,-640,-41.5],"label":"input_phase"},
+{"from":-1,"fromPort":"R","toPort":"","points":[-806.5,-90,-796.5,-90,-775.8083343505859,-90,-775.8083343505859,-88,-755.1166687011719,-88,-745.1166687011719,-88],"label":""},
+{"points":[682.3833312988281,-76,692.3833312988281,-76,715.6916656494141,-76,715.6916656494141,-81.5,739,-81.5,749,-81.5],"color":"black","to":-9,"label":""}
+]}

@@ -1,0 +1,5 @@
+time;model_id;model_name;port_name;data
+0;4;input_reader_4;;0
+0;4;input_reader_4;out;Anaphase
+0;4;input_reader_4;;inf
+23;4;input_reader_4;;inf

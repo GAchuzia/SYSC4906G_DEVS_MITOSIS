@@ -1,0 +1,4 @@
+time;model_id;model_name;port_name;data
+0;7;chromosome_2;;uncondensed
+0;7;chromosome_2;;uncondensed
+23;7;chromosome_2;;uncondensed

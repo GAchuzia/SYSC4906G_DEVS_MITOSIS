@@ -1,0 +1,10 @@
+time;model_id;model_name;port_name;data
+0;11;centrosome;;stable
+0;11;centrosome;;stable
+5;11;centrosome;;duplicated
+7;11;centrosome;status_out;not_ready
+7;11;centrosome;;duplicated
+10;11;centrosome;;migrating
+13;11;centrosome;status_out;not_ready
+13;11;centrosome;;migrating
+23;11;centrosome;;migrating

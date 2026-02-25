@@ -1,0 +1,6 @@
+time;model_id;model_name;port_name;data
+0;2;nuclear_envelope_1;;intact
+0;2;nuclear_envelope_1;;disassembling
+1;2;nuclear_envelope_1;status_out;not_ready
+1;2;nuclear_envelope_1;;absent
+23;2;nuclear_envelope_1;;absent

@@ -1,0 +1,9 @@
+time;model_id;model_name;port_name;data
+0;8;nucleolus;;stable
+0;8;nucleolus;;disappeared
+2;8;nucleolus;status_out;not_ready
+2;8;nucleolus;;disappeared
+20;8;nucleolus;;reappearing
+23;8;nucleolus;status_out;not_ready
+23;8;nucleolus;;reappearing
+23;8;nucleolus;;reappearing

@@ -1,0 +1,15 @@
+time;model_id;model_name;port_name;data
+0;5;chromosome_1;;uncondensed
+0;5;chromosome_1;;condensed
+1;5;chromosome_1;status_out;not_ready
+1;5;chromosome_1;;condensed
+10;5;chromosome_1;;aligned
+11;5;chromosome_1;status_out;not_ready
+11;5;chromosome_1;;aligned
+15;5;chromosome_1;;separating
+16;5;chromosome_1;status_out;not_ready
+16;5;chromosome_1;;separating
+20;5;chromosome_1;;decondensing
+21;5;chromosome_1;status_out;not_ready
+21;5;chromosome_1;;completed
+23;5;chromosome_1;;completed

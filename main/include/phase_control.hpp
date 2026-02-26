@@ -25,9 +25,9 @@ struct PhaseControl : public Coupled {
 
         // input ports
         chrom_status  = addInPort<std::string>("chrom_status");
-        ne_status     = addInPort<std::string>("ne_status");
-        sp_status     = addInPort<std::string>("sp_status");
-        cen_status    = addInPort<std::string>("cen_status");
+        ne_status = addInPort<std::string>("ne_status");
+        sp_status = addInPort<std::string>("sp_status");
+        cen_status = addInPort<std::string>("cen_status");
         nucleo_status = addInPort<std::string>("nucleo_status");
 
         // output ports
@@ -37,10 +37,10 @@ struct PhaseControl : public Coupled {
         auto phaseController = addComponent<PhaseController>("phaseController");
 
         // external couplings
-        addCoupling(chrom_status,  statusChecker->chrom_status);
-        addCoupling(ne_status,     statusChecker->ne_status);
-        addCoupling(sp_status,     statusChecker->sp_status);
-        addCoupling(cen_status,    statusChecker->cen_status);
+        addCoupling(chrom_status, statusChecker->chrom_status);
+        addCoupling(ne_status, statusChecker->ne_status);
+        addCoupling(sp_status, statusChecker->sp_status);
+        addCoupling(cen_status, statusChecker->cen_status);
         addCoupling(nucleo_status, statusChecker->nucleo_status);
 
         // internal coupling 

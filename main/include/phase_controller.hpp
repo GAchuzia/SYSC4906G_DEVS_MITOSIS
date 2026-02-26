@@ -41,7 +41,7 @@ public:
     void externalTransition(PhaseControllerState& state, double e) const override {
         for (const auto &msg : permission->getBag()) {
 
-            if (msg == "transition") {
+            if (msg == "allow_transition") {
 
                 if (state.state == "Interphase")
                     state.state = "Prophase";

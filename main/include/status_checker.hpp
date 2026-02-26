@@ -46,9 +46,9 @@ public:
         state.sigma = std::numeric_limits<double>::infinity();
 
         chrom_status  = addInPort<std::string>("chrom_status");
-        ne_status     = addInPort<std::string>("ne_status");
-        sp_status     = addInPort<std::string>("sp_status");
-        cen_status    = addInPort<std::string>("cen_status");
+        ne_status = addInPort<std::string>("ne_status");
+        sp_status = addInPort<std::string>("sp_status");
+        cen_status = addInPort<std::string>("cen_status");
         nucleo_status = addInPort<std::string>("nucleo_status");
 
         transition = addOutPort<std::string>("transition");
@@ -71,21 +71,21 @@ public:
             s.sigma = std::max(0.0, s.sigma - e);
         }
 
-        for (const auto& msg : chrom_status->getBag())  s.chrom_ready  = (msg == "ready");
-        for (const auto& msg : ne_status->getBag())     s.ne_ready     = (msg == "ready");
-        for (const auto& msg : sp_status->getBag())     s.sp_ready     = (msg == "ready");
-        for (const auto& msg : cen_status->getBag())    s.cen_ready    = (msg == "ready");
+        for (const auto& msg : chrom_status->getBag()) s.chrom_ready  = (msg == "ready");
+        for (const auto& msg : ne_status->getBag()) s.ne_ready = (msg == "ready");
+        for (const auto& msg : sp_status->getBag()) s.sp_ready = (msg == "ready");
+        for (const auto& msg : cen_status->getBag()) s.cen_ready = (msg == "ready");
         for (const auto& msg : nucleo_status->getBag()) s.nucleo_ready = (msg == "ready");
 
         bool all_ready = s.chrom_ready && s.ne_ready && s.sp_ready && s.cen_ready && s.nucleo_ready;
 
         if (all_ready) {
-            if (s.phase == "Interphase")      s.phase = "Prophase";
-            else if (s.phase == "Prophase")   s.phase = "Metaphase";
-            else if (s.phase == "Metaphase")  s.phase = "Anaphase";
-            else if (s.phase == "Anaphase")   s.phase = "Telophase";
-            else if (s.phase == "Telophase")  s.phase = "Cytokinesis";
-            else if (s.phase == "Cytokinesis")s.phase = "Interphase";
+            if (s.phase == "Interphase") s.phase = "Prophase";
+            else if (s.phase == "Prophase") s.phase = "Metaphase";
+            else if (s.phase == "Metaphase") s.phase = "Anaphase";
+            else if (s.phase == "Anaphase") s.phase = "Telophase";
+            else if (s.phase == "Telophase") s.phase = "Cytokinesis";
+            else if (s.phase == "Cytokinesis") s.phase = "Interphase";
 
             // schedule immediate output
             s.sigma = 0.0;

@@ -48,7 +48,7 @@ public:
                 state.state = "migrating";
                  state.active = true; 
             }
-            else if (msg == "Anaphase" || msg == "Telophase") { 
+            else if (msg == "Anaphase" || msg == "Telophase" || msg == "Cytokinesis") { 
                 state.state = "at_poles"; 
                 state.active = true; 
             }
@@ -57,7 +57,7 @@ public:
 
     // Output
     void output(const CentrosomeState& state) const override {
-        if (state.state == "at_poles") {
+        if (state.state == "at_poles" || state.state == "stable" || state.state == "duplicated" || state.state == "migrating") {
             status_out->addMessage("ready");
         } else {
             status_out->addMessage("not_ready");

@@ -28,33 +28,38 @@ public:
         status_out = addOutPort<std::string>("status_out");
     }
 
+    // Internal Transition
     void internalTransition(ChromosomeState& state) const override {
-        if (state.state == "decondensing") {
-            state.state = "completed";
-        }
+        if (state.state == "condensing") state.state = "condensed";
+        else if (state.state == "aligning") state.state = "aligned";
+        else if (state.state == "separating") state.state = "separated";
+        else if (state.state == "decondensing") state.state = "uncondensed";
         state.active = false;
     }
 
+    // External Transition
     void externalTransition(ChromosomeState& state, double e) const override {
         for (const auto& msg : phase_in->getBag()) {
-            if (msg == "Prophase" && state.state == "uncondensed") {
-                state.state = "condensed";
+            if (msg == "Prophase") {
+                state.state = "condensing";
                 state.active = true;
-            } else if (msg == "Metaphase" && state.state == "condensed") {
-                state.state = "aligned";
+            } else if (msg == "Metaphase") {
+                state.state = "aligning";
                 state.active = true;
-            } else if (msg == "Anaphase" && state.state == "aligned") {
+            } else if (msg == "Anaphase") {
                 state.state = "separating";
                 state.active = true;
-            } else if (msg == "Telophase" && state.state == "separating") {
+            } else if (msg == "Telophase" || msg == "Cytokinesis") {
                 state.state = "decondensing";
                 state.active = true;
             }
         }
     }
 
+    // Output
     void output(const ChromosomeState& state) const override {
-        if (state.state == "completed") {
+        if (state.state == "condensing" || state.state == "aligning" || 
+            state.state == "separating" || state.state == "decondensing") {
             status_out->addMessage("ready");
         } else {
             status_out->addMessage("not_ready");
@@ -63,10 +68,10 @@ public:
 
     double timeAdvance(const ChromosomeState& state) const override {
         if (state.active) {
-            if (state.state == "condensed")   return 1.0;  // t1
-            if (state.state == "aligned")    return 1.0;  // t2
-            if (state.state == "separating")  return 1.0;  // t3
-            if (state.state == "decondensing") return 1.0; // t4
+            if (state.state == "condensing")   return 1.0; 
+            if (state.state == "aligning")     return 1.0; 
+            if (state.state == "separating")   return 1.0; 
+            if (state.state == "decondensing") return 1.0;
         }
         return std::numeric_limits<double>::infinity();
     }

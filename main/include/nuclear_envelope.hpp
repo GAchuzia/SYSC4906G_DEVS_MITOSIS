@@ -28,49 +28,46 @@ public:
         status_out = addOutPort<std::string>("status_out");
     }
 
+    // Internal Transition
     void internalTransition(NuclearEnvelopeState& state) const override {
-        if (state.state == "disassembling") {
-            state.state = "absent";
-        } else if (state.state == "reforming") {
-            state.state = "restored";
-        }
-        state.active = false;
+        if (state.state == "disassembling") state.state = "absent";
+        else if (state.state == "absent_ack") state.state = "absent";
+        else if (state.state == "reforming") state.state = "restored";
     }
 
+    // External Transition
     void externalTransition(NuclearEnvelopeState& state, double e) const override {
         for (const auto& msg : phase_in->getBag()) {
-            if (msg == "Interphase") {
-                state.state = "intact";
-                state.active = false;
-            } else if (msg == "Prophase") {
+            if (msg == "Prophase") {
                 state.state = "disassembling";
                 state.active = true;
             } else if (msg == "Metaphase" || msg == "Anaphase") {
-                state.state = "absent";
-                state.active = false;
-            } else if (msg == "Telophase") {
+                // Temporary state to acknowledge the phase and trigger output
+                state.state = "absent_ack"; 
+                state.active = true;
+            } else if (msg == "Telophase" || msg == "Cytokinesis") {
                 state.state = "reforming";
                 state.active = true;
-            } else if (msg == "Cytokinesis") {
-                state.state = "restored";
-                state.active = false;
             }
         }
     }
 
+    // Output
     void output(const NuclearEnvelopeState& state) const override {
-        if (state.state == "restored") {
+    if (state.state == "disassembling" || state.state == "reforming" || state.state == "absent_ack") {
             status_out->addMessage("ready");
         } else {
             status_out->addMessage("not_ready");
         }
     }
 
+    // Time Advance
     double timeAdvance(const NuclearEnvelopeState& state) const override {
         if (state.active) {
-            if (state.state == "disassembling") return 1.0; // t1
-            if (state.state == "reforming")     return 1.0; // t2
-        }
+            if (state.state == "disassembling") return 1.0; 
+            if (state.state == "reforming")     return 1.0; 
+            if (state.state == "absent_ack")    return 0.1; 
+        }        
         return std::numeric_limits<double>::infinity();
     }
 };

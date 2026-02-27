@@ -1,3 +1,6 @@
+#ifndef TOP_HPP
+#define TOP_HPP
+
 #include <cadmium/modeling/devs/coupled.hpp>
 #include <cadmium/lib/iestream.hpp>
 #include "../main/include/phase_control.hpp"
@@ -5,25 +8,49 @@
 
 using namespace cadmium;
 
-class top_model : public Coupled {
+/**
+ * Mitosis System Coupled Model
+ */
+class mitosis_system : public Coupled {
 public:
-    top_model(const std::string& id) : Coupled(id) {
+    Port<std::string> start_trigger;
 
-        auto chrom_reader  = addComponent<lib::IEStream<std::string>>("chrom_reader", "input_data/chrom_input.txt");
-        auto ne_reader = addComponent<lib::IEStream<std::string>>( "ne_reader", "input_data/ne_input.txt");
-        auto sp_reader = addComponent<lib::IEStream<std::string>>("sp_reader", "input_data/sp_input.txt");
-        auto cen_reader = addComponent<lib::IEStream<std::string>>("cen_reader", "input_data/cen_input.txt");
-        auto nucleo_reader = addComponent<lib::IEStream<std::string>>("nucleo_reader", "input_data/nucleo_input.txt");
-        
+    mitosis_system(const std::string& id) : Coupled(id) {
+        start_trigger = addInPort<std::string>("start_trigger");
+
         auto phaseControl   = addComponent<PhaseControl>("phaseControl");
         auto cellStructures = addComponent<CellStructures>("cellStructures");
 
-        addCoupling(chrom_reader->out, phaseControl->chrom_status);
-        addCoupling(ne_reader->out, phaseControl->ne_status);
-        addCoupling(sp_reader->out, phaseControl->sp_status);
-        addCoupling(cen_reader->out, phaseControl->cen_status);
-        addCoupling(nucleo_reader->out, phaseControl->nucleo_status);
+        // EIC
+        addCoupling(start_trigger, phaseControl->start_in);
 
-        addCoupling(phaseControl->phase_event, cellStructures -> phase_in); 
+        // IC (PhaseControl -> CellStructures)
+        addCoupling(phaseControl->phase_event, cellStructures->phase_in);
+
+        // IC (CellStructures -> PhaseControl)
+        addCoupling(cellStructures->out_chrom,  phaseControl->chrom_status);
+        addCoupling(cellStructures->out_ne,     phaseControl->ne_status);
+        addCoupling(cellStructures->out_sp,     phaseControl->sp_status);
+        addCoupling(cellStructures->out_cen,    phaseControl->cen_status);
+        addCoupling(cellStructures->out_nucleo, phaseControl->nucleo_status);
     }
 };
+
+/**
+ * Top Model
+ */
+class top_model : public Coupled {
+public:
+    top_model(const std::string& id) : Coupled(id) {
+        // Read from input start text file
+        auto start_reader = addComponent<lib::IEStream<std::string>>("start_reader", "input_data/start.txt");
+        
+        // mitosis_system component
+        auto system = addComponent<mitosis_system>("mitosis_system");
+
+        // Coupling the reader output to the system's trigger port
+        addCoupling(start_reader->out, system->start_trigger);
+    }
+};
+
+#endif

@@ -1,7 +1,6 @@
 #ifndef NUCLEOLUS_HPP 
 #define NUCLEOLUS_HPP
 
-
 #include <cadmium/modeling/devs/atomic.hpp>
 #include <iostream>
 #include <string>
@@ -22,61 +21,60 @@ inline ostream& operator<<(ostream& os, const NucleolusState& s) {
 
 class Nucleolus : public Atomic<NucleolusState> {
 public:
-    
     Port<std::string> phase_in;
     Port<std::string> status_out;
-
 
     Nucleolus(const std::string& id) : Atomic<NucleolusState>(id, {"visible", false}) {
         phase_in = addInPort<std::string>("phase_in");
         status_out = addOutPort<std::string>("status_out");
     }
 
-
     // Internal Transition
     void internalTransition(NucleolusState& state) const override {
-        state.active = false;
+        if (state.state == "disappearing") state.state = "disappeared";
+        else if (state.state == "absent_ack") state.state = "disappeared";
+        else if (state.state == "reappearing") state.state = "visible";
+        
+        state.active = false; 
     }
 
     // External Transition
     void externalTransition(NucleolusState& state, double e) const override {
         for (const auto &msg : phase_in->getBag()) {
-            if (msg == "Interphase" || msg == "Cytokinesis") {
+            if (msg == "Interphase") {
                 state.state = "visible";
                 state.active = false;
-            }
+            } 
             else if (msg == "Prophase") {
-                state.state = "disappeared";
-                state.active = true;   // transition process
-            }
-            else if (msg == "Telophase") {
+                state.state = "disappearing";
+                state.active = true;
+            } 
+            else if (msg == "Metaphase" || msg == "Anaphase") {
+                state.state = "absent_ack"; 
+                state.active = true;
+            } 
+            else if (msg == "Telophase" || msg =="Cytokinesis") {
                 state.state = "reappearing";
-                state.active = true;   // transition process
+                state.active = true;
             }
         }
     }
 
     // Output
     void output(const NucleolusState& state) const override {
-        if (state.state == "visible") {
+        if (state.state == "disappearing" || state.state == "absent_ack" || state.state == "reappearing") {
             status_out->addMessage("ready");
         } else {
             status_out->addMessage("not_ready");
         }
     }
 
-
     // Time Advance
     double timeAdvance(const NucleolusState& state) const override {
-        if (state.active){
-            if (state.state == "disappeared")
-                return 2.0;  // t1
-
-            if (state.state == "reappearing")
-                return 3.0;  // t2
-
-            // if (state.state == "visible")
-            //     return 0.0; // Trigger output immediately
+        if (state.active) {
+            if (state.state == "disappearing") return 2.0;  
+            if (state.state == "absent_ack")   return 0.1;  // Fast acknowledgment 
+            if (state.state == "reappearing")  return 3.0;  
         }
         return std::numeric_limits<double>::infinity();
     }

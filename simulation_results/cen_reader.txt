@@ -1,0 +1,17 @@
+time;model_id;model_name;port_name;data
+0;13;cen_reader;;0
+0;13;cen_reader;out;ready
+0;13;cen_reader;;5
+5;13;cen_reader;out;not_ready
+5;13;cen_reader;;15
+20;13;cen_reader;out;ready
+20;13;cen_reader;;10
+30;13;cen_reader;out;not_ready
+30;13;cen_reader;;15
+45;13;cen_reader;out;ready
+45;13;cen_reader;;10
+55;13;cen_reader;out;not_ready
+55;13;cen_reader;;15
+70;13;cen_reader;out;ready
+70;13;cen_reader;;inf
+73;13;cen_reader;;inf

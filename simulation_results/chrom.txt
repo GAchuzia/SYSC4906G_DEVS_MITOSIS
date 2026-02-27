@@ -1,0 +1,15 @@
+time;model_id;model_name;port_name;data
+0;9;chrom;;uncondensed
+1;9;chrom;;condensing
+2;9;chrom;status_out;ready
+2;9;chrom;;condensed
+3;9;chrom;;aligning
+4;9;chrom;status_out;ready
+4;9;chrom;;aligned
+6;9;chrom;;separating
+7;9;chrom;status_out;ready
+7;9;chrom;;separated
+9;9;chrom;;decondensing
+10;9;chrom;status_out;ready
+10;9;chrom;;uncondensed
+12;9;chrom;;uncondensed

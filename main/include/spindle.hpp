@@ -64,7 +64,7 @@ public:
 
     // Output
     void output(const SpindleState& state) const override {
-        if (state.state == "inactive") {
+        if (state.state == "inactive" || state.state == "forming" || state.state == "attached" || state.state == "pulling" || state.state == "disassembling") {
             status_out->addMessage("ready");
         } else {
             status_out->addMessage("not_ready");

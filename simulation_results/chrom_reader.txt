@@ -1,0 +1,17 @@
+time;model_id;model_name;port_name;data
+0;16;chrom_reader;;0
+0;16;chrom_reader;out;ready
+0;16;chrom_reader;;5
+5;16;chrom_reader;out;not_ready
+5;16;chrom_reader;;15
+20;16;chrom_reader;out;ready
+20;16;chrom_reader;;10
+30;16;chrom_reader;out;not_ready
+30;16;chrom_reader;;15
+45;16;chrom_reader;out;ready
+45;16;chrom_reader;;10
+55;16;chrom_reader;out;not_ready
+55;16;chrom_reader;;15
+70;16;chrom_reader;out;ready
+70;16;chrom_reader;;inf
+73;16;chrom_reader;;inf

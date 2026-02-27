@@ -1,5 +1,5 @@
 # Cadmium Mitosis — Makefile
-# CADMIUM_PATH: Cadmium include path (default: devssim)
+# CADMIUM_PATH: path containing the Cadmium headers (default: /home/cadmium/rt_cadmium/include)
 # Targets: simulation (default), run_tests, clean
 CADMIUM_PATH ?= /home/cadmium/rt_cadmium/include
 CXX         = g++
@@ -11,11 +11,11 @@ all: simulation
 
 simulation: main/main.cpp top_model/top.hpp main/include/*.hpp
 	$(CXX) $(CXXFLAGS) main/main.cpp -o simulation
-	@echo "Build successful. Run: ./simulation"
+	@echo "Build successful. Run: ./simulation (runs the full Mitosis system)"
 
 run_tests: tests/main.cpp tests/test.hpp main/include/*.hpp
 	$(CXX) $(CXXFLAGS) tests/main.cpp -o run_tests
-	@echo "Tests built. Run: ./run_tests"
+	@echo "Tests built. Run: ./run_tests (uses input_data/atomic_models/* test cases)"
 
 clean:
 	rm -f simulation run_tests

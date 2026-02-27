@@ -1,5 +1,6 @@
 # Cadmium Mitosis — Makefile
-# Set CADMIUM_PATH for your environment (default: devssim path)
+# CADMIUM_PATH: Cadmium include path (default: devssim)
+# Targets: simulation (default), run_tests, clean
 CADMIUM_PATH ?= /home/cadmium/rt_cadmium/include
 CXX         = g++
 CXXFLAGS    = -g -O3 -std=c++17 -I $(CADMIUM_PATH)

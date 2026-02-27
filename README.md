@@ -38,7 +38,9 @@ Input data for the model and tests
 - `atomic_models/`: Used by `run_tests`: `TC_Chromosome1.txt`, `TC_Chromosome2.txt`, `TC_Nuclear_Envelope1.txt`, `TC_Nuclear_Envelope2.txt`, `TC_Centrosome1.txt`, `TC_Nucleolus1.txt`, etc.
 
 **simulation_results/**  
-Created when you run `./simulation`. One text file per DEVS model (e.g. `mitosis_system.txt`, `phaseControl.txt`, `cellStructures.txt`). Each file is CSV with header `time;model_id;model_name;port_name;data`.
+Created when you run `./simulation`. Contains:
+- `simulation_output.txt`: Full simulation log (same as stdout).
+
 
 **tests/**  
 Unit tests for atomic models
@@ -78,7 +80,7 @@ This creates `simulation`. For tests: `make run_tests` creates `run_tests`.
 ./simulation
 ```
 
-Reads the start trigger sequence from `input_data/start.txt` (see `top_model/top.hpp`). Runs the full mitosis system and writes CSV logs to stdout and to `simulation_results/` (one file per model).
+Reads the start trigger sequence from `input_data/start.txt` (see `top_model/top.hpp`). Runs the full mitosis system and writes CSV logs to stdout, to `simulation_results/simulation_output.txt` (full log), and to one file per model in `simulation_results/`.
 
 ### 4. Run atomic tests
 

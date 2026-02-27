@@ -24,6 +24,9 @@ namespace {
     void write_results_by_model(const std::string& captured_log) {
         std::string log = strip_ansi(captured_log);
         std::filesystem::create_directories(RESULTS_DIR);
+        std::string full_log_path = std::string(RESULTS_DIR) + "/simulation_output.txt";
+        std::ofstream full_out(full_log_path);
+        if (full_out) full_out << log;
         std::set<std::string> seen;
         std::istringstream in(log);
         std::string line;

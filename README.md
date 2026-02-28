@@ -51,7 +51,7 @@ Alternate script to compile the simulation only.
 - main.cpp
 - test.hpp
 
-**tests/results** 
+**tests/results**  
 *Output files contianing the results of each atomic and coupled model test(s)*
 ---
 

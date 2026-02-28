@@ -19,5 +19,33 @@ int main() {
     // Test 3: StatusChecker
     // run_test<StatusChecker>("Status_Test", "input_data/atomic_models/TC_StatusChecker1.txt");
 
+    // Test 4: PhaseController 
+    run_phase_controller_test<PhaseController>("PhaseController_Test", "input_data/atomic_models/TC_PhaseController.txt");
+
+    // COUPLED TESTS
+    run_phase_control_test<PhaseControl>(
+        "PhaseControl_Test",
+        "input_data/coupled_models/start.txt",
+        "input_data/coupled_models/chrom_input.txt",
+        "input_data/coupled_models/ne_input.txt",
+        "input_data/coupled_models/sp_input.txt",
+        "input_data/coupled_models/cen_input.txt",
+        "input_data/coupled_models/nucleo_input.txt"
+    );
+
+    run_test<CentrosomePair>("CentrosomePair_Test", "input_data/coupled_models/TC_Centrosome_Pair.txt");
+    
+    run_test<CellStructures>( "CellStructures_Test", "input_data/coupled_models/TC_CellStructures.txt" );
+
+    run_phase_control_test<StatusChecker>(
+        "StatusChecker_Test",
+        "input_data/coupled_models/start.txt",
+        "input_data/coupled_models/chrom_input.txt",
+        "input_data/coupled_models/ne_input.txt",
+        "input_data/coupled_models/sp_input.txt",
+        "input_data/coupled_models/cen_input.txt",
+        "input_data/coupled_models/nucleo_input.txt"
+    );
+
     return 0;
 }

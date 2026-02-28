@@ -43,7 +43,7 @@ class top_model : public Coupled {
 public:
     top_model(const std::string& id) : Coupled(id) {
         // Read from input start text file
-        auto start_reader = addComponent<lib::IEStream<std::string>>("start_reader", "input_data/start.txt");
+        auto start_reader = addComponent<lib::IEStream<std::string>>("start_reader", "input_data/coupled_models/start.txt");
         
         // mitosis_system component
         auto system = addComponent<mitosis_system>("mitosis_system");

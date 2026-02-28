@@ -1,21 +1,44 @@
-# Cadmium Mitosis — Makefile
-# CADMIUM_PATH: path containing the Cadmium headers (default: /home/cadmium/rt_cadmium/include)
-# Targets: all (simulation + run_tests), simulation, run_tests, clean
+#   make all        # build simulation and run_tests (no run)
+#   make simulation # build and run simulation
+#   make tests      # build and run run_tests
+#   make clean      # remove executables
+# Override: make CADMIUM_PATH=/path/to/cadmium/include
+
 CADMIUM_PATH ?= /home/cadmium/rt_cadmium/include
-CXX         = g++
-CXXFLAGS    = -g -O3 -std=c++17 -I $(CADMIUM_PATH)
+CXX          = g++
+CXXFLAGS     = -g -O3 -std=c++17 -I$(CADMIUM_PATH)
 
-.PHONY: all clean simulation run_tests
+BUILD_DIR   = build
+SIMULATION  = $(BUILD_DIR)/simulation
+RUN_TESTS   = $(BUILD_DIR)/run_tests
 
-all: simulation run_tests
+TOP_HEADERS  = top_model/top.hpp
+MAIN_HEADERS = main/include/centrosome.hpp main/include/centrosome_pair.hpp \
+	main/include/cell_structures.hpp main/include/chromosome.hpp \
+	main/include/nuclear_envelope.hpp main/include/nucleolus.hpp \
+	main/include/phase_control.hpp main/include/phase_controller.hpp \
+	main/include/spindle.hpp main/include/status_checker.hpp
 
-simulation: main/main.cpp top_model/top.hpp main/include/*.hpp
-	$(CXX) $(CXXFLAGS) main/main.cpp -o simulation
-	@echo "Build successful. Run: ./simulation (runs the full Mitosis system)"
+.PHONY: all simulation tests clean
 
-run_tests: tests/main.cpp tests/test.hpp main/include/*.hpp
-	$(CXX) $(CXXFLAGS) tests/main.cpp -o run_tests
-	@echo "Tests built. Run: ./run_tests (uses input_data/atomic_models/* test cases)"
+all: $(SIMULATION) $(RUN_TESTS)
+	@echo "Build complete. Run: ./$(SIMULATION) or ./$(RUN_TESTS)"
+
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
+$(SIMULATION): main/main.cpp $(TOP_HEADERS) $(MAIN_HEADERS) | $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) main/main.cpp -o $(SIMULATION)
+
+$(RUN_TESTS): tests/main.cpp tests/test.hpp $(MAIN_HEADERS) | $(BUILD_DIR)
+	$(CXX) $(CXXFLAGS) tests/main.cpp -o $(RUN_TESTS)
+
+simulation: $(SIMULATION)
+	./$(SIMULATION)
+
+tests: $(RUN_TESTS)
+	mkdir -p tests/results
+	./$(RUN_TESTS)
 
 clean:
-	rm -f simulation run_tests
+	rm -f $(SIMULATION) $(RUN_TESTS)

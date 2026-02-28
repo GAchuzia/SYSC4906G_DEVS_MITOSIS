@@ -17,7 +17,7 @@ Alternate script to compile the simulation only.
 
 ---
 
-**main/**
+**main/**  
 *Entry point and source for the full mitosis simulation.*
 
 - main.cpp
@@ -36,7 +36,7 @@ Alternate script to compile the simulation only.
 
 ---
 
-**top_model/**
+**top_model/**  
 *Top coupled model: wires the mitosis system and reads the start trigger from `input_data/coupled_models/start.txt`.*
 
 - top.hpp

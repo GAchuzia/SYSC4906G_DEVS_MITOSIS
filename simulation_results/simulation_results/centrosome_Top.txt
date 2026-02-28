@@ -1,0 +1,15 @@
+time;model_id;model_name;port_name;data
+0;6;centrosome_Top;;stable
+1;6;centrosome_Top;;duplicated
+3;6;centrosome_Top;status_out;ready
+3;6;centrosome_Top;;duplicated
+3;6;centrosome_Top;;migrating
+6;6;centrosome_Top;status_out;ready
+6;6;centrosome_Top;;migrating
+6;6;centrosome_Top;;at_poles
+6;6;centrosome_Top;status_out;ready
+6;6;centrosome_Top;;at_poles
+9;6;centrosome_Top;;at_poles
+9;6;centrosome_Top;status_out;ready
+9;6;centrosome_Top;;at_poles
+12;6;centrosome_Top;;at_poles

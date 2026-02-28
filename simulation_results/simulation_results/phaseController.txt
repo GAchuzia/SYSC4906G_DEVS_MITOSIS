@@ -1,0 +1,16 @@
+time;model_id;model_name;port_name;data
+0;11;phaseController;;Interphase
+1;11;phaseController;;Prophase
+1;11;phaseController;phase_event;Prophase
+1;11;phaseController;;Prophase
+3;11;phaseController;;Metaphase
+3;11;phaseController;phase_event;Metaphase
+3;11;phaseController;;Metaphase
+6;11;phaseController;;Anaphase
+6;11;phaseController;phase_event;Anaphase
+6;11;phaseController;;Anaphase
+9;11;phaseController;;Telophase
+9;11;phaseController;phase_event;Telophase
+9;11;phaseController;;Telophase
+12;11;phaseController;;Telophase
+12;11;phaseController;;Telophase

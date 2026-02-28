@@ -1,0 +1,26 @@
+time;model_id;model_name;port_name;data
+0;12;statusChecker;;Interphase
+1;12;statusChecker;;Prophase
+1;12;statusChecker;transition;allow_transition
+1;12;statusChecker;;Prophase
+2;12;statusChecker;;Prophase
+3;12;statusChecker;;Metaphase
+3;12;statusChecker;transition;allow_transition
+3;12;statusChecker;;Metaphase
+3.1;12;statusChecker;;Metaphase
+4;12;statusChecker;;Metaphase
+6;12;statusChecker;;Anaphase
+6;12;statusChecker;transition;allow_transition
+6;12;statusChecker;;Anaphase
+6;12;statusChecker;;Anaphase
+6.1;12;statusChecker;;Anaphase
+7;12;statusChecker;;Anaphase
+9;12;statusChecker;;Telophase
+9;12;statusChecker;transition;allow_transition
+9;12;statusChecker;;Telophase
+9;12;statusChecker;;Telophase
+10;12;statusChecker;;Telophase
+12;12;statusChecker;;Cytokinesis
+12;12;statusChecker;transition;Simulation Complete
+12;12;statusChecker;;Cytokinesis
+12;12;statusChecker;;Cytokinesis

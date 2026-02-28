@@ -1,0 +1,15 @@
+time;model_id;model_name;port_name;data
+0;8;ne;;intact
+1;8;ne;;disassembling
+2;8;ne;status_out;ready
+2;8;ne;;absent
+3;8;ne;;absent_ack
+3.1;8;ne;status_out;ready
+3.1;8;ne;;absent
+6;8;ne;;absent_ack
+6.1;8;ne;status_out;ready
+6.1;8;ne;;absent
+9;8;ne;;reforming
+10;8;ne;status_out;ready
+10;8;ne;;restored
+12;8;ne;;restored

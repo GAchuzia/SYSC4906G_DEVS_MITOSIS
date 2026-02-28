@@ -51,6 +51,8 @@ Alternate script to compile the simulation only.
 - main.cpp
 - test.hpp
 
+**tests/results** 
+*Output files contianing the results of each atomic and coupled model test(s)*
 ---
 
 **input_data/**  
@@ -116,7 +118,7 @@ Update the Cadmium include path in the Makefile (and in build_sim.sh if you use 
   - Use the path to your `cadmium/include` (or the folder that contains the Cadmium headers).
 
 **2 – Compile and run**  
-Open a terminal (e.g. Ubuntu terminal on Linux, Cygwin on Windows) in the project root (Cadmium-Mitosis folder).
+Open a terminal in the project root (Cadmium-Mitosis folder).
 
 - To **build both** the simulation and test executables (no run):  
   `make all`  
@@ -143,7 +145,7 @@ Or, if you already ran `make all`, run the test executable directly:
 ./build/run_tests
 ```
 
-To inspect test output, go to the **simulation_results** folder and open the generated files (e.g. per-model `*_results.txt` and the full log).
+To inspect test output, go to the **/test/results** folder and open the generated files.
 
 **4 – Run the top model (simulation)**  
 From the project root you can run the simulation with:
@@ -158,4 +160,4 @@ Or, if you already ran `make all`, run the simulation executable directly:
 ./build/simulation
 ```
 
-The simulation reads the start trigger from **input_data/coupled_models/start.txt**. Output is written to **simulation_results/** (e.g. simulation_output.txt and per-model `*_results.txt`).
+The simulation reads the start trigger from **input_data/coupled_models/start.txt**. Output is written to **simulation_results/** .

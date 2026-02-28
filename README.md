@@ -1,90 +1,145 @@
 # Cadmium Mitosis Model
 
-The Mitosis DEVS model implemented in Cadmium.
+This folder contains the **Mitosis** DEVS model implemented in Cadmium.
 
 ---
 
-## Files Organization
+# FILES ORGANIZATION
 
-Root
 
-- `README.md`
-- `makefile`
-- `build_sim.sh`
+**Makefile**  
+Build and run targets: `make simulation`, `make tests`, `make clean`.
 
-**main/**  
-Entry point and atomic/coupled model headers
+**build_sim.sh**  
+Alternate script to compile the simulation only.
 
-- `main.cpp`
-- `include/`
-  - `chromosome.hpp`
-  - `centrosome.hpp`
-  - `centrosome_pair.hpp`
-  - `nuclear_envelope.hpp`
-  - `nucleolus.hpp`
-  - `spindle.hpp`
-  - `phase_controller.hpp`
-  - `status_checker.hpp`
+---
 
-**top_model/**  
-Top coupled model
+**main/**   
+*Entry point and source for the full mitosis simulation.*
 
-- `top.hpp`: Defines `top_model`, which wires the `mitosis_system` coupled model and reads a start trigger sequence from `input_data/start.txt`.
+- main.cpp
+- include/
+  - centrosome.hpp
+  - centrosome_pair.hpp
+  - cell_structures.hpp
+  - chromosome.hpp
+  - nuclear_envelope.hpp
+  - nucleolus.hpp
+  - phase_control.hpp
+  - phase_controller.hpp
+  - spindle.hpp
+  - status_checker.hpp
+  - mitosis_system.hpp
+
+---
+
+**top_model/**   
+*Top coupled model: wires the mitosis system and reads the start trigger from `input_data/coupled_models/start.txt`.*
+
+- top.hpp
+- mitosis_simulation.hpp
+- mitosis_sim.cpp
+
+---
+
+**tests/**  
+*Unit tests for atomic and coupled models.*
+
+- main.cpp
+- test.hpp
+
+---
 
 **input_data/**  
-Input data for the model and tests
+*Input data to run the model and the tests.*
 
-- `start.txt`: Start trigger sequence consumed by `top_model`
-- `atomic_models/`: Used by `run_tests`: `TC_Chromosome1.txt`, `TC_Chromosome2.txt`, `TC_Nuclear_Envelope1.txt`, `TC_Nuclear_Envelope2.txt`, `TC_Centrosome1.txt`, `TC_Nucleolus1.txt`, etc.
-
-**simulation_results/**  
-Created when you run `./simulation`. Contains:
-- `simulation_output.txt`: Full simulation log (same as stdout).
-- One file per DEVS model (e.g. `mitosis_system.txt`, `phaseControl.txt`, `cellStructures.txt`). Each is CSV with header `time;model_id;model_name;port_name;data`.
-**tests/**  
-Unit tests for atomic models
-
-- `main.cpp`
-- `test.hpp`
-
-**atomics/**  
-DEVS Graph / JSON specs
-
-- `ChromosomeModel.json`, `NuclearEnvelopeModel.json`, `CentrosomeModel.json`, `NucleolusModel.json`, `SpindleAppartusModel.json`, `StatusChecker.json`, `PhaseController.json`
+- atomic_models/
+  - TC_Centrosome1.txt
+  - TC_Chromosome1.txt, TC_Chromosome2.txt
+  - TC_Nuclear_Envelope1.txt, TC_Nuclear_Envelope2.txt
+  - TC_Nucleolus1.txt
+  - TC_PhaseController.txt, TC_PhaseController1.txt
+  - TC_Spindle1.txt
+  - TC_StatusChecker1.txt
+  - mitosis_input.txt
+- coupled_models/
+  - start.txt
+  - chrom_input.txt, ne_input.txt, sp_input.txt, cen_input.txt, nucleo_input.txt
+  - phase_controller.txt
+  - TC_CellStructures.txt
+  - TC_Centrosome_Pair.txt
 
 ---
 
-## Steps
+**simulation_results/**  
+*Created automatically the first time you run the simulation. It stores the outputs from your simulations and tests.*
 
-### 1. Set Cadmium include path
+---
 
-- **Makefile:** set `CADMIUM_PATH` or run `make CADMIUM_PATH=/path/to/cadmium/include`
-- **build_sim.sh:** edit `CADMIUM_PATH="/home/cadmium/rt_cadmium/include"`
+**atomics/**  
+*DEVS / JSON specs for the atomic models.*
 
-### 2. Build
+- CentrosomeModel.json
+- ChromosomeModel.json
+- NuclearEnvelopeModel.json
+- NucleolusModel.json
+- PhaseController.json
+- SpindleAppartusModel.json
+- StatusChecker.json
 
-From this folder:
+---
+
+**docs/**  
+*Assignment and model form documentation.*
+
+**.github/workflows/**  
+*CI configuration (e.g. release.yml).*
+
+---
+
+# STEPS
+
+**0 – Model documentation**  
+The **docs/** folder contains the explanation of this model (e.g. assignment and model form docs).
+
+**1 – Update include path**  
+Update the Cadmium include path in the Makefile (and in build_sim.sh if you use it).
+
+- In the **Makefile**, set or override:
+  - `CADMIUM_PATH ?= /home/cadmium/rt_cadmium/include`
+  - Example: `make CADMIUM_PATH=/path/to/cadmium/include`
+- In **build_sim.sh**, edit:
+  - `CADMIUM_PATH="/home/cadmium/rt_cadmium/include"`
+  - Use the path to your `cadmium/include` (or the folder that contains the Cadmium headers).
+
+**2 – Compile and run**  
+Open a terminal (e.g. Ubuntu terminal on Linux, Cygwin on Windows) in the project root (Cadmium-Mitosis folder).
+
+- To **compile and run the simulation**:  
+  `make simulation`  
+  This builds the `simulation` executable and runs it. The executable is created in the project root.
+- To **compile and run the tests**:  
+  `make tests`  
+  This builds the `run_tests` executable and runs it. The executable is created in the project root.
+- To **remove** the built executables:  
+  `make clean`
+
+**3 – Run the tests**  
+From the project root, run:
 
 ```bash
-make clean; make all
+./run_tests
 ```
 
-Or: `./build_sim.sh`
 
-This creates both `simulation` and `run_tests`. To build only one: `make simulation` or `make run_tests`.
+To inspect test output, go to the **simulation_results** folder and open the generated files (e.g. per-model `*_results.txt` and the full log).
 
-### 3. Run the top model
+**4 – Run the top model (simulation)**  
+From the project root, run:
 
 ```bash
 ./simulation
 ```
 
-Reads the start trigger sequence from `input_data/start.txt` (see `top_model/top.hpp`). Runs the full mitosis system and writes CSV logs to stdout, to `simulation_results/simulation_output.txt` (full log), and to one file per model in `simulation_results/`.
-
-### 4. Run atomic tests
-
-After `make run_tests`:
-
-```bash
-./run_tests
-```
+The simulation reads the start trigger from **input_data/coupled_models/start.txt**. Output is written to **simulation_results/** (e.g. simulation_output.txt and per-model `*_results.txt`).

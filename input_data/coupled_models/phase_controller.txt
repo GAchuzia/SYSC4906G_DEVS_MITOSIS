@@ -1,0 +1,17 @@
+0.0 transition
+5.0 do_not_transition
+10.0 do_not_transition
+15.0 do_not_transition
+20.0 transition
+25.0 transition
+30.0 do_not_transition
+35.0 do_not_transition
+40.0 do_not_transition
+45.0 transition
+50.0 transition
+55.0 do_not_transition
+60.0 do_not_transition
+65.0 do_not_transition
+70.0 transition
+75.0 transition
+80.0 transition
